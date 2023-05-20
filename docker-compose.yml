@@ -1,0 +1,26 @@
+# docker-compose.yml
+version: "3.3"
+
+services:
+  mc:
+    image: itzg/minecraft-server
+    ports:
+      - 25565:25565
+    environment:
+      EULA: "TRUE"
+
+      SERVER_NAME: "Insik"
+      MOTD: "Funny Insik world"
+
+      # "peaceful" / "easy" / "normal" / "hard"
+      DIFFICULTY: "normal"
+
+      # https://github.com/itzg/docker-minecraft-server#memory-limit
+      MEMORY: 3G
+
+      # uncomment this to import a saved game. (put your savegame directory in the saves-to-import directory)
+      # WORLD: "/worlds/My-World"
+
+    volumes:
+      - ./minecraft-data:/data
+      - ./saves-to-import:/worlds:ro
